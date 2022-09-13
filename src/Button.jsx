@@ -35,11 +35,11 @@ const Button = (props) => {
       {...props}
       onClick={() => console.log(props)}
     >
-      {props.startIcon && (
+      {props.startIcon !== "none" && (
         <span className="material-icons md-18">{props.startIcon}</span>
       )}
       {props.label}
-      {props.endIcon && (
+      {props.endIcon !== "none" && (
         <span className="material-icons md-18">{props.endIcon}</span>
       )}
     </Btn>

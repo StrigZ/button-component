@@ -40,11 +40,25 @@ export default {
       control: "boolean",
     },
     startIcon: {
-      options: ["close", "settings", "done", "file_download", "file_upload"],
+      options: [
+        "none",
+        "close",
+        "settings",
+        "done",
+        "file_download",
+        "file_upload",
+      ],
       control: "radio",
     },
     endIcon: {
-      options: ["close", "settings", "done", "file_download", "file_upload"],
+      options: [
+        "none",
+        "close",
+        "settings",
+        "done",
+        "file_download",
+        "file_upload",
+      ],
       control: "radio",
     },
   },
