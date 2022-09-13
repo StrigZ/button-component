@@ -75,4 +75,6 @@ Default.args = {
   disabled: false,
   disableShadow: false,
   variant: "default",
+  color: "default",
+  size: "md",
 };
