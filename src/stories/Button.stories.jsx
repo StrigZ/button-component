@@ -1,40 +1,64 @@
-import React from 'react';
+// Button.stories.js|jsx
 
-import { Button } from './Button';
+import React from "react";
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+import Button from "../Button";
+
 export default {
-  title: 'Example/Button',
+  /* 👇 The title prop is optional.
+   * See https://storybook.js.org/docs/react/configure/overview#configure-story-loading
+   * to learn how to generate automatic titles
+   */
+  title: "Button",
   component: Button,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  parameters: { controls: { sort: "requiredFirst" } },
   argTypes: {
-    backgroundColor: { control: 'color' },
+    variant: {
+      options: ["default", "outline", "text"],
+      control: "inline-radio",
+    },
+    size: {
+      options: ["sm", "md", "lg"],
+      control: "inline-radio",
+    },
+    color: {
+      options: ["default", "primary", "secondary", "danger", "custom"],
+      control: "inline-radio",
+    },
+    customColor: {
+      control: "color",
+      if: { arg: "color", eq: "custom" },
+    },
+    customBackgroundColor: {
+      control: "color",
+      if: { arg: "color", eq: "custom" },
+    },
+    disabled: {
+      control: "boolean",
+    },
+    disableShadow: {
+      control: "boolean",
+    },
+    startIcon: {
+      options: ["close", "settings", "done", "file_download", "file_upload"],
+      control: "radio",
+    },
+    endIcon: {
+      options: ["close", "settings", "done", "file_download", "file_upload"],
+      control: "radio",
+    },
   },
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+//👇 We create a “template” of how args map to rendering
 const Template = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+//👇 Each story then reuses that template
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Default = Template.bind({});
+Default.args = {
+  label: "Default",
+  disabled: false,
+  disableShadow: false,
+  variant: "default",
 };
